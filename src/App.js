@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import ChoseMoviePage from "./components/ChoseMoviePage";
+import ChoseSession from "./components/ChoseSession";
 
 function App() {
   return (
@@ -7,7 +8,8 @@ function App() {
       <Header>
         <h1>CINEFLEX</h1>
       </Header>
-      <ChoseMoviePage />
+      {/* <ChoseMoviePage /> */}
+      <ChoseSession />
     </>
   );
 }
