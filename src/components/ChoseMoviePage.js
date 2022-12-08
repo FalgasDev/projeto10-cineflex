@@ -15,7 +15,7 @@ export default function ChoseMoviePage() {
     <Container>
       <p>Selecione o filme</p>
       <ContainerMovies>
-        {movie.map(m => <MovieCard image={m.posterURL}/>)}
+        {movie.map(m => <MovieCard key={m.id} image={m.posterURL} id={m.id}/>)}
       </ContainerMovies>
     </Container>
   )

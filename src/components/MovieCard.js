@@ -1,8 +1,11 @@
 import styled from "styled-components"
+import { useNavigate } from "react-router-dom"
 
-export default function MovieCard({image}) {
+export default function MovieCard({image, id}) {
+  const navigate = useNavigate()
+
   return (
-    <CardMovie>
+    <CardMovie onClick={() => navigate(`/sessoes/${id}`)}>
       <img src={image} alt=""/>
     </CardMovie>
   )

@@ -1,16 +1,21 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 import ChoseMoviePage from "./components/ChoseMoviePage";
+import ChoseSeat from "./components/ChoseSeat";
 import ChoseSession from "./components/ChoseSession";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Header>
         <h1>CINEFLEX</h1>
       </Header>
-      {/* <ChoseMoviePage /> */}
-      <ChoseSession />
-    </>
+      <Routes>
+        <Route path="/" element={<ChoseMoviePage />}/>
+        <Route path="/sessoes/:idFilme" element={<ChoseSession />}/>
+        <Route path="/assentos/:idSessao" element={<ChoseSeat />}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

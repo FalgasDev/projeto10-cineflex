@@ -1,12 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 export default function Sessions({session}) {
   const {showtimes} = session
+	const navigate = useNavigate()
 	return (
 		<>
 			<p>{session.weekday} - {session.date}</p>
 			<Buttons>
-				{showtimes.map(a => <button>{a.name}</button>)}
+				{showtimes.map(a => <button key={a.id} onClick={() => navigate(`/assentos/${a.id}`)}>{a.name}</button>)}
 			</Buttons>
 		</>
 	);
