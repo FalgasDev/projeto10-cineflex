@@ -1,10 +1,19 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 export default function Seats({seats}) {
+  const [selectedSeats, setSelectedSeats] = useState([])
+
+  function selectSeat(req) {
+    const newArray = [...selectedSeats, req]
+    setSelectedSeats(newArray)
+    console.log(newArray)
+  }
+
 	return (
 		<ContainerSeats>
 			{seats.map((s) => (
-				<Seat key={s.id} s={s.isAvailable}>{s.name}</Seat>
+				<Seat onClick={s.isAvailable ? () => selectSeat(s.name) : () => alert('Esse assento não está disponível')} key={s.id} name={s.name} selectedSeats={selectedSeats} s={s.isAvailable}>{s.name}</Seat>
 			))}
 			<div>
 				<div></div>
@@ -63,8 +72,8 @@ const ContainerSeats = styled.div`
 const Seat = styled.button`
   width: 26px;
   height: 26px;
-  background-color: ${props => props.s ? '#C3CFD9' : '#FBE192'};
-  border: 1px solid ${props => props.s ? '#808F9D' : '#F7C52B'};
+  background-color: ${props => props.selectedSeats.includes(props.name) ? '#1AAE9E' : props.s ? '#C3CFD9' : '#FBE192'};
+  border: 1px solid ${props => props.selectedSeats.includes(props.name) ? '#0E7D71' : props.s ? '#808F9D' : '#F7C52B'};
   border-radius: 12px;
   margin-bottom: 11px;
   font-family: 'Roboto', sans-serif;
