@@ -1,10 +1,15 @@
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 import ChoseMoviePage from "./components/ChoseMoviePage";
 import ChoseSeat from "./components/ChoseSeat";
 import ChoseSession from "./components/ChoseSession";
+import SucessPage from "./components/SucessPage";
 
 function App() {
+  const [hour, setHour] = useState([])
+  const [selectedSeats, setSelectedSeats] = useState([]);
+
   return (
     <BrowserRouter>
       <Header>
@@ -13,7 +18,8 @@ function App() {
       <Routes>
         <Route path="/" element={<ChoseMoviePage />}/>
         <Route path="/sessoes/:idFilme" element={<ChoseSession />}/>
-        <Route path="/assentos/:idSessao" element={<ChoseSeat />}/>
+        <Route path="/assentos/:idSessao" element={<ChoseSeat hour={hour} setHour={setHour} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats}/>}/>
+        <Route path="/sucesso" element={<SucessPage hour={hour} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats}/>}/>
       </Routes>
     </BrowserRouter>
   );
