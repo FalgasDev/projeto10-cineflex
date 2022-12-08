@@ -5,12 +5,12 @@ export default function Sessions({session}) {
   const {showtimes} = session
 	const navigate = useNavigate()
 	return (
-		<>
+		<div data-test="movie-day">
 			<p>{session.weekday} - {session.date}</p>
 			<Buttons>
-				{showtimes.map(a => <button key={a.id} onClick={() => navigate(`/assentos/${a.id}`)}>{a.name}</button>)}
+				{showtimes.map(a => <button key={a.id} data-test="showtime" onClick={() => navigate(`/assentos/${a.id}`)}>{a.name}</button>)}
 			</Buttons>
-		</>
+		</div>
 	);
 }
 

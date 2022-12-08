@@ -9,16 +9,22 @@ export default function SucessPage({hour, selectedSeats, setSelectedSeats}) {
     <Container>
       <p>Pedido feito com sucesso!</p>
       <Informations>
-        <h1>Filme e sessão</h1>
-        <p>{movie.title}</p>
-        <p>{day.date} {name}</p>
-        <h1>Ingressos</h1>
-        {selectedSeats.map(s => <p>Assento {s}</p>)}
-        <h1>Comprador</h1>
-        <p>Nome: Fábio</p>
-        <p>CPF: 333.333.333-33</p>
+        <div data-test="movie-info">
+          <h1>Filme e sessão</h1>
+          <p>{movie ? movie.title : ''}</p>
+          <p>{day ? day.date : ''} {name ? name : ''}</p>
+        </div>
+        <div data-test="seats-info">
+          <h1>Ingressos</h1>
+          {selectedSeats.map(s => <p>Assento {s}</p>)}
+        </div>
+        <div data-test="client-info">
+          <h1>Comprador</h1>
+          <p>Nome: Fábio</p>
+          <p>CPF: 333.333.333-33</p>
+        </div>
       </Informations>
-      <BackHomeButton onClick={() => {
+      <BackHomeButton data-test="go-home-btn" onClick={() => {
         navigate('/')
         setSelectedSeats([])
         }}>Voltar pra Home</BackHomeButton>

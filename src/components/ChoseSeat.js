@@ -26,14 +26,14 @@ export default function ChoseSeat({hour, setHour, selectedSeats, setSelectedSeat
     <Container>
       <p>Selecione o(s) assento(s)</p>
       <Seats seats={seats} selectedSeatsId={selectedSeatsId} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats} setSelectedSeatsId={setSelectedSeatsId}/>
-      <ReserveSeatsButton onClick={() => {
+      <ReserveSeatsButton data-test="book-seat-btn" onClick={() => {
         axios.post('https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many', {
           ids: selectedSeatsId,
           name: "Fábio",
           cpf: "33333333333"
         }).then(navigate('/sucesso')).catch(err => console.log(err))
         }}>Reservar assento(s)</ReserveSeatsButton>
-      <ContainerFooter>
+      <ContainerFooter data-test="footer">
         <img src={chosedMovie.posterURL} alt=""/>
         <div>
           <p>{chosedMovie.title}</p>

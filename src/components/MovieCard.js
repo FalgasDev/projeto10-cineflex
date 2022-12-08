@@ -5,7 +5,7 @@ export default function MovieCard({image, id}) {
   const navigate = useNavigate()
 
   return (
-    <CardMovie onClick={() => navigate(`/sessoes/${id}`)}>
+    <CardMovie data-test="movie" onClick={() => navigate(`/sessoes/${id}`)}>
       <img src={image} alt=""/>
     </CardMovie>
   )

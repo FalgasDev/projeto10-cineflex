@@ -23,7 +23,7 @@ export default function ChoseSession() {
       <ContainerSessions>
         {session.map(s => <Sessions key={s.id} session={s}/>)}
       </ContainerSessions>
-      <ContainerFooter>
+      <ContainerFooter data-test="footer">
         <img src={movieChosed.posterURL} alt=""/>
         <p>{movieChosed.title}</p>
       </ContainerFooter>

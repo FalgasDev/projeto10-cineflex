@@ -7,8 +7,6 @@ export default function Seats({ seats, selectedSeatsId, setSelectedSeatsId, sele
 			const newIds = [...selectedSeatsId, req.id];
 			setSelectedSeats(newSelected);
 			setSelectedSeatsId(newIds);
-			console.log(newSelected);
-			console.log(newIds);
 		}
 	}
 
@@ -16,6 +14,7 @@ export default function Seats({ seats, selectedSeatsId, setSelectedSeatsId, sele
 		<ContainerSeats>
 			{seats.map((s) => (
 				<Seat
+					data-test="seat"
 					onClick={
 						s.isAvailable
 							? () => selectSeat(s)
