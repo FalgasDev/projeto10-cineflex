@@ -9,6 +9,8 @@ import SucessPage from "./components/SucessPage";
 function App() {
   const [hour, setHour] = useState([])
   const [selectedSeats, setSelectedSeats] = useState([]);
+  const [inputName, setInputName] = useState('')
+  const [inputCPF, setInputCPF] = useState('')
 
   return (
     <BrowserRouter>
@@ -18,8 +20,8 @@ function App() {
       <Routes>
         <Route path="/" element={<ChoseMoviePage />}/>
         <Route path="/sessoes/:idFilme" element={<ChoseSession />}/>
-        <Route path="/assentos/:idSessao" element={<ChoseSeat hour={hour} setHour={setHour} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats}/>}/>
-        <Route path="/sucesso" element={<SucessPage hour={hour} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats}/>}/>
+        <Route path="/assentos/:idSessao" element={<ChoseSeat hour={hour} setHour={setHour} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats} inputName={inputName} setInputName={setInputName} inputCPF={inputCPF} setInputCPF={setInputCPF}/>}/>
+        <Route path="/sucesso" element={<SucessPage hour={hour} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats} inputName={inputName} inputCPF={inputCPF}/>}/>
       </Routes>
     </BrowserRouter>
   );

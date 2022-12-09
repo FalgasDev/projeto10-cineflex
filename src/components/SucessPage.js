@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
-export default function SucessPage({hour, selectedSeats, setSelectedSeats}) {
+export default function SucessPage({hour, selectedSeats, setSelectedSeats, inputName, inputCPF}) {
   const {name, day, movie} = hour
   const navigate = useNavigate()
 
@@ -16,12 +16,12 @@ export default function SucessPage({hour, selectedSeats, setSelectedSeats}) {
         </div>
         <div data-test="seats-info">
           <h1>Ingressos</h1>
-          {selectedSeats.map(s => <p>Assento {s}</p>)}
+          {selectedSeats.map(s => <p key={s}>Assento {s}</p>)}
         </div>
         <div data-test="client-info">
           <h1>Comprador</h1>
-          <p>Nome: Fábio</p>
-          <p>CPF: 333.333.333-33</p>
+          <p>Nome: {inputName}</p>
+          <p>CPF: {inputCPF}</p>
         </div>
       </Informations>
       <BackHomeButton data-test="go-home-btn" onClick={() => {

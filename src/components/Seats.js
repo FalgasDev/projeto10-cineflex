@@ -7,6 +7,11 @@ export default function Seats({ seats, selectedSeatsId, setSelectedSeatsId, sele
 			const newIds = [...selectedSeatsId, req.id];
 			setSelectedSeats(newSelected);
 			setSelectedSeatsId(newIds);
+		} else {
+			const removeSelect = selectedSeats.filter(props => props !== req.name)
+			const removeSelectId = selectedSeatsId.filter(props => props !== req.id)
+			setSelectedSeats(removeSelect)
+			setSelectedSeatsId(removeSelectId)
 		}
 	}
 
