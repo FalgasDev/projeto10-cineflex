@@ -9,10 +9,10 @@ export default function ChoseSeat({
 	setHour,
 	selectedSeats,
 	setSelectedSeats,
-  inputName,
-  setInputName,
-  inputCPF,
-  setInputCPF
+	inputName,
+	setInputName,
+	inputCPF,
+	setInputCPF,
 }) {
 	const [seats, setSeats] = useState([]);
 	const [chosedMovie, setChosedMovie] = useState([]);
@@ -34,7 +34,7 @@ export default function ChoseSeat({
 	}, []);
 
 	function reserveSeats(e) {
-    e.preventDefault()
+		e.preventDefault();
 
 		if (selectedSeats.length === 0) {
 			alert('Você precisa selecionar pelo menos 1 assento');
@@ -49,9 +49,8 @@ export default function ChoseSeat({
 					}
 				)
 				.then(navigate('/sucesso'))
-				.catch((err) => console.log(err));
+				.catch((err) => console.log(err.response.data));
 		}
-    console.log('salve')
 	}
 
 	return (
@@ -64,17 +63,31 @@ export default function ChoseSeat({
 				setSelectedSeats={setSelectedSeats}
 				setSelectedSeatsId={setSelectedSeatsId}
 			/>
-      <FormInformation onSubmit={reserveSeats}>
-        <p>Nome do comprador:</p>
-        <input data-test="client-name" type='text' value={inputName} onChange={e => setInputName(e.target.value)} placeholder="Digite seu nome..." required/>
-        <p>CPF do comprador:</p>
-        <input data-test="client-cpf" type='text' value={inputCPF} onChange={e => setInputCPF(e.target.value)}placeholder="Digite seu CPF..." required/>
-        <div>
-          <ReserveSeatsButton data-test="book-seat-btn" type='submit'>
-				    Reservar assento(s)
-			    </ReserveSeatsButton>
-        </div>
-      </FormInformation>
+			<FormInformation onSubmit={reserveSeats}>
+				<p>Nome do comprador:</p>
+				<input
+					data-test="client-name"
+					type="text"
+					value={inputName}
+					onChange={(e) => setInputName(e.target.value)}
+					placeholder="Digite seu nome..."
+					required
+				/>
+				<p>CPF do comprador:</p>
+				<input
+					data-test="client-cpf"
+					type="text"
+					value={inputCPF}
+					onChange={(e) => setInputCPF(e.target.value)}
+					placeholder="Digite seu CPF..."
+					required
+				/>
+				<div>
+					<ReserveSeatsButton data-test="book-seat-btn" type="submit">
+						Reservar assento(s)
+					</ReserveSeatsButton>
+				</div>
+			</FormInformation>
 			<ContainerFooter data-test="footer">
 				<img src={chosedMovie.posterURL} alt="" />
 				<div>
@@ -130,7 +143,7 @@ const ContainerFooter = styled.div`
 
 const ReserveSeatsButton = styled.button`
 	margin-top: 50px;
-  margin-bottom: 137px;
+	margin-bottom: 137px;
 	width: 225px;
 	height: 42px;
 	border: none;
@@ -138,32 +151,33 @@ const ReserveSeatsButton = styled.button`
 	background-color: #e8833a;
 	color: #ffffff;
 	font-size: 18px;
+	cursor: pointer;
 `;
 
 const FormInformation = styled.form`
-  margin-top: 33px;
-  width: 327px;
-  display: flex;
-  flex-direction: column;
-  font-family: 'Roboto', sans-serif;
-  p {
-    font-size: 18px;
-    color: #293845;
-    margin-top: 12px;
-  }
-  input {
-    height: 51px;
-    border: 1px solid #D5D5D5;
-    border-radius: 3px;
-    padding-left: 18px;
-    font-size: 18px;
-    &::placeholder {
-      font-style: italic;
-      color: #AFAFAF;
-    }
-  }
-  div {
-    display: flex;
-    justify-content: center;
-  }
-`
+	margin-top: 33px;
+	width: 327px;
+	display: flex;
+	flex-direction: column;
+	font-family: 'Roboto', sans-serif;
+	p {
+		font-size: 18px;
+		color: #293845;
+		margin-top: 12px;
+	}
+	input {
+		height: 51px;
+		border: 1px solid #d5d5d5;
+		border-radius: 3px;
+		padding-left: 18px;
+		font-size: 18px;
+		&::placeholder {
+			font-style: italic;
+			color: #afafaf;
+		}
+	}
+	div {
+		display: flex;
+		justify-content: center;
+	}
+`;

@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
-export default function Seats({ seats, selectedSeatsId, setSelectedSeatsId, selectedSeats, setSelectedSeats }) {
+export default function Seats({
+	seats,
+	selectedSeatsId,
+	setSelectedSeatsId,
+	selectedSeats,
+	setSelectedSeats,
+}) {
 	function selectSeat(req) {
 		if (!selectedSeats.some((props) => props === req.name)) {
 			const newSelected = [...selectedSeats, req.name];
@@ -8,10 +14,12 @@ export default function Seats({ seats, selectedSeatsId, setSelectedSeatsId, sele
 			setSelectedSeats(newSelected);
 			setSelectedSeatsId(newIds);
 		} else {
-			const removeSelect = selectedSeats.filter(props => props !== req.name)
-			const removeSelectId = selectedSeatsId.filter(props => props !== req.id)
-			setSelectedSeats(removeSelect)
-			setSelectedSeatsId(removeSelectId)
+			const removeSelect = selectedSeats.filter((props) => props !== req.name);
+			const removeSelectId = selectedSeatsId.filter(
+				(props) => props !== req.id
+			);
+			setSelectedSeats(removeSelect);
+			setSelectedSeatsId(removeSelectId);
 		}
 	}
 
@@ -107,4 +115,5 @@ const Seat = styled.button`
 	margin-bottom: 11px;
 	font-family: 'Roboto', sans-serif;
 	font-size: 11px;
+	cursor: pointer;
 `;
